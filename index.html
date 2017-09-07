@@ -1,0 +1,75 @@
+<script src="js/jquery.js"></script>
+
+<div class="container">
+
+    <div class="outer">
+
+        <div class="inner">
+            <h1>This is a big header</h1>
+           <p>This is the inside text that needs to be altered. This is the inside text that needs to be altered. This is the inside text that needs to be altered. This is the inside text that needs to be altered. This is the inside text that needs to be altered. This is the inside text that needs to be altered. </p>
+           <p><a href="#">This is a link</a></p>
+        </div>
+
+    </div>
+    
+</div>
+
+<style>
+
+.container{max-width: 1020px; width: 100%; margin: 0 auto; background-color: #666;}
+
+.outer{height: 200px; overflow: hidden;}
+.inner{text-align: center; padding: 1em; background-color: rgba(255,255,255,0.5);}
+
+</style>
+
+<script>
+
+$(document).ready(function(){
+
+    //alert($('.outer').outerHeight() + ' ' + $('.inner').outerHeight());
+
+    checkHeights();
+
+
+});
+
+function checkHeights(){
+
+    if( $('.inner').outerWidth() > $('.outer').outerHeight()){
+        var size = $('.inner').children().css('font-size');
+        size = parseInt(size, 10);
+        
+        $('.inner').children().css('font-size', size-5 );
+
+    }
+
+}
+
+
+function getSize() {
+  size = $( "h1" ).css( "font-size" );
+  size = parseInt(size, 10);
+  $( "#font-size" ).text(  size  );
+}
+
+//get inital font size
+getSize();
+
+$( "#up" ).on( "click", function() {
+
+  // parse font size, if less than 50 increase font size
+  if ((size + 2) <= 50) {
+    $( "h1" ).css( "font-size", "+=2" );
+    $( "#font-size" ).text(  size += 2 );
+  }
+});
+
+$( "#down" ).on( "click", function() {
+  if ((size - 2) >= 12) {
+    $( "h1" ).css( "font-size", "-=2" );
+    $( "#font-size" ).text(  size -= 2  );
+  }
+});
+
+</script>
